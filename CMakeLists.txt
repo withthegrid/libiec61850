@@ -195,4 +195,19 @@ if(EXISTS "${CMAKE_ROOT}/Modules/CPack.cmake")
     include(CPack)
 endif(EXISTS "${CMAKE_ROOT}/Modules/CPack.cmake")
 
-
+add_library(libiec61850 INTERFACE)
+target_link_libraries(libiec61850 INTERFACE iec61850)
+target_include_directories(libiec61850 INTERFACE
+    ${CMAKE_CURRENT_BINARY_DIR}/config
+    ${CMAKE_CURRENT_LIST_DIR}/src/common/inc
+    ${CMAKE_CURRENT_LIST_DIR}/src/goose
+    ${CMAKE_CURRENT_LIST_DIR}/src/sampled_values
+    ${CMAKE_CURRENT_LIST_DIR}/src/hal/inc
+    ${CMAKE_CURRENT_LIST_DIR}/src/iec61850/inc
+    ${CMAKE_CURRENT_LIST_DIR}/src/iec61850/inc_private
+    ${CMAKE_CURRENT_LIST_DIR}/src/mms/inc
+    ${CMAKE_CURRENT_LIST_DIR}/src/mms/inc_private
+    ${CMAKE_CURRENT_LIST_DIR}/src/mms/iso_mms/asn1c
+    ${CMAKE_CURRENT_LIST_DIR}/src/logging
+    ${CMAKE_CURRENT_LIST_DIR}/hal/inc
+)
